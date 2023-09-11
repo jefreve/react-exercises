@@ -2,14 +2,18 @@ import React from "react";
 import { Login } from "./Login";
 
 export class App extends React.Component {
+  state = {
+    isLogged: false,
+  };
+
   onLogin = () => {
-    console.log("ciao");
+    console.log(this.state.isLogged);
   };
 
   render() {
     return (
       <div>
-        <Login loginHandler={this.onLogin} />
+        <Login onLoginHandler={this.onLogin} />
       </div>
     );
   }
