@@ -8,8 +8,10 @@ export class Login extends React.Component {
 
   handleChangeInput = (event) => {
     const name = event.target.name;
+    const value = event.target.value;
+
     this.setState({
-      [name]: name === "username" ? this.state.username : this.state.password,
+      [name]: value,
     });
   };
 
@@ -34,7 +36,7 @@ export class Login extends React.Component {
               ? false
               : true
           }
-          onClick={this.props.onLoginHandler}
+          onClick={this.props.loginFunction}
         >
           Login
         </button>

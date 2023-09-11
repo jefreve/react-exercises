@@ -3,17 +3,20 @@ import { Login } from "./Login";
 
 export class App extends React.Component {
   state = {
-    isLogged: false,
+    value: true,
+    number: 7,
+    date: new Date(),
+    string: "this is the state",
   };
 
   onLogin = () => {
-    console.log(this.state.isLogged);
+    console.log(this.state);
   };
 
   render() {
     return (
       <div>
-        <Login onLoginHandler={this.onLogin} />
+        <Login loginFunction={this.onLogin} />
       </div>
     );
   }
