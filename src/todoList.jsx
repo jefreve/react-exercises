@@ -6,12 +6,20 @@ export class TodoList extends React.Component {
   };
 
   addTodo = (event) => {
-    const value = event.target.parentNode.querySelector(
-      '[name="inputField"]'
-    ).value;
+    const input = event.target.parentNode.querySelector('[name="inputField"]');
+    const inputValue = input.value;
+
+    this.clearTodo(input);
+
     const newItemsArray = this.state.items;
-    newItemsArray.push(value);
+
+    newItemsArray.push(inputValue);
+
     this.setState({ items: newItemsArray });
+  };
+
+  clearTodo = (input) => {
+    input.value = "";
   };
 
   render() {
