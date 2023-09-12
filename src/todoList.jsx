@@ -6,7 +6,9 @@ export class TodoList extends React.Component {
   };
 
   addTodo = (event) => {
-    const value = event.target.parentNode.querySelector("input").value;
+    const value = event.target.parentNode.querySelector(
+      '[name="inputField"]'
+    ).value;
     const newItemsArray = this.state.items;
     newItemsArray.push(value);
     this.setState({ items: newItemsArray });
