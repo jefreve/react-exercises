@@ -1,11 +1,9 @@
 import React, { useState, useContext } from "react";
 import { TodoList } from "./todoList";
-
 import { LanguageContext } from "./LanguageContext";
 
 export function App() {
   const [lang, setLang] = useState("en");
-  const value = useContext(LanguageContext);
 
   function handleSelectChange(event) {
     setLang(event.target.value);
@@ -14,10 +12,10 @@ export function App() {
   return (
     <div>
       <select value={lang} onChange={handleSelectChange}>
-        <option value="en"></option>
-        <option value="it"></option>
+        <option value="en">ENGLISH</option>
+        <option value="it">ITALIANO</option>
       </select>
-      <value.Provider value={lang}>
+      <LanguageContext.Provider value={lang}>
         <TodoList
           initialArray={[
             "Homework",
@@ -27,7 +25,7 @@ export function App() {
             "Play guitar",
           ]}
         />
-      </value.Provider>
+      </LanguageContext.Provider>
     </div>
   );
 }
