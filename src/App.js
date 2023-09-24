@@ -1,14 +1,10 @@
 import React from "react";
-import { Hello } from "./Hello";
-import { Message } from "./Message";
+import { GithubUser } from "./GithubUser";
 
-export class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Hello />
-        <Message />
-      </div>
-    );
-  }
+export function App() {
+  return (
+    <div>
+      <GithubUser username="jefreve" />
+    </div>
+  );
 }
