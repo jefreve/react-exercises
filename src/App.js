@@ -4,7 +4,7 @@ import { Counter } from "./Counter";
 export function App() {
   return (
     <div>
-      <Counter />
+      <Counter initialValue={5} />
     </div>
   );
 }
