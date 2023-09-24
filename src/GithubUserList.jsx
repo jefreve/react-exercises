@@ -23,10 +23,10 @@ export function GithubUserList() {
   function handleAddUser(event) {
     const input = event.target.parentElement.querySelector("input");
 
-    if (!userList.includes(input.value)) {
-      const newUserList = [...userList, input.value];
+    if (!userList.includes(userInputValue) && userInputValue !== "") {
+      const newUserList = [...userList, userInputValue];
 
-      setUserList([...newUserList]);
+      setUserList(newUserList);
     } else {
       alert("user already added");
     }
