@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { GithubUser } from "./GithubUser";
-import { ShowGithubUser } from "./ShowGithubUser";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export function GithubUserList() {
   const [users, setUsers] = useState([]);
@@ -12,7 +10,7 @@ export function GithubUserList() {
   }
 
   function handleAddUser() {
-    if (userInput != "" && !users.includes(userInput)) {
+    if (userInput !== "" && !users.includes(userInput)) {
       setUsers((prev) => [...prev, userInput]);
     }
   }
@@ -20,17 +18,22 @@ export function GithubUserList() {
   return (
     <div>
       <input value={userInput} name="userInput" onChange={handleInput}></input>
+
       <button onClick={handleAddUser}>Add User</button>
 
       <ul style={{ listStyle: "none", paddingInlineStart: "0px" }}>
         {users.map((user, index) => {
           return (
             <li name="index" key={user + "-" + index}>
-              <GithubUser username={user} />
+              <Link to={`/users/${user}`}>{user}'s Github</Link>
             </li>
           );
         })}
       </ul>
+
+      <hr />
+
+      <Outlet />
     </div>
   );
 }
