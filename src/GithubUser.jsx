@@ -2,7 +2,7 @@ import React from "react";
 import { useGithubUser } from "./useGithubUser";
 
 export function GithubUser({ username }) {
-  const { data, error, isUsernameNull } = useGithubUser(username);
+  const { data, error, isUsernameNull, onRefresh } = useGithubUser(username);
 
   return (
     <div>
@@ -17,6 +17,9 @@ export function GithubUser({ username }) {
 
       {data && !error && (
         <div>
+          {/* the refresh button is visible only when the fetch is executed */}
+          <button onClick={onRefresh}>Refresh</button>
+          {/* User details  */}
           <h3>{data.name}</h3>
           <img
             style={{ marginBottom: "8px", display: "block" }}

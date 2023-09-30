@@ -19,8 +19,15 @@ export function useGithubUser(username) {
     isUsernameNull = false;
   }
 
-  const { data, error } = useSWR(argument);
+  const { data, error, mutate } = useSWR(argument);
   // can't place useSWR (and hooks in general) inside of conditional expressions
+  //that is why I handled a conditional expression before calling useSWR
+  // and then assigned the correct argument to useSWR, depending on the result of the expression
 
-  return { data, error, isUsernameNull };
+  function handleRefreshUser() {
+    // this function handles refetching the data
+    mutate();
+  }
+
+  return { data, error, isUsernameNull, onRefresh: handleRefreshUser };
 }
