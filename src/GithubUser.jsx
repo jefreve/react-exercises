@@ -2,20 +2,16 @@ import React, { useEffect } from "react";
 import { useGithubUser } from "./useGithubUser";
 
 export function GithubUser({ username }) {
-  const { data, error, loading, onFetch } = useGithubUser();
-
-  function getUserData() {
-    onFetch(username);
-  }
+  const { data, error } = useGithubUser(username);
 
   return (
     <div>
-      <button onClick={getUserData}>Add user</button>
-      {loading && <p>Loading...</p>}
+      {/* <button onClick={getUserData}>Add user</button> */}
+      {!data && !error && <p>Loading...</p>}
 
       {error && <p style={{ color: "red" }}>Error: "{error.message}"</p>}
 
-      {data && !loading && !error && (
+      {data && !error && (
         <div>
           <h3>{data.name}</h3>
           <img
