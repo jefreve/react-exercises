@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useGithubUser } from "./useGithubUser";
 
 export function GithubUser({ username }) {
@@ -19,14 +19,15 @@ export function GithubUser({ username }) {
             width="200px"
             height="200px"
             src={data.avatar_url}
-            alt="profile picture"
+            alt="profile"
           ></img>
 
-          <a href={data.html_url} target="_blank">
+          <a href={data.html_url} target="_blank" rel="noreferrer">
             Github URL
           </a>
         </div>
       )}
+      <p>Data: {(data === null).toString()}</p>
     </div>
   );
 }
