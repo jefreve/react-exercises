@@ -2,13 +2,17 @@ import React from "react";
 import { useGithubUser } from "./useGithubUser";
 
 export function GithubUser({ username }) {
-  const { data, error } = useGithubUser(username);
+  const { data, error, isUsernameNull } = useGithubUser(username);
 
   return (
     <div>
-      {/* <button onClick={getUserData}>Add user</button> */}
-      {!data && !error && <p>Loading...</p>}
+      {/* this will show if username isn't null */}
+      {!data && !error && !isUsernameNull && <p>Loading...</p>}
 
+      {/* otherwise, if username is null, this will show */}
+      {!data && !error && isUsernameNull && (
+        <p>Username is null, thus no request was made.</p>
+      )}
       {error && <p style={{ color: "red" }}>Error: "{error.message}"</p>}
 
       {data && !error && (
@@ -27,7 +31,6 @@ export function GithubUser({ username }) {
           </a>
         </div>
       )}
-      <p>Data: {(data === null).toString()}</p>
     </div>
   );
 }
